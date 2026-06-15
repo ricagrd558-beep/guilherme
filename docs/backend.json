@@ -1,0 +1,37 @@
+
+{
+  "entities": {
+    "StoreMetrics": {
+      "title": "Métricas da Loja",
+      "description": "Dados de fluxo de clientes e configurações globais.",
+      "type": "object",
+      "properties": {
+        "socialMedia": { "type": "number" },
+        "passerby": { "type": "number" },
+        "referral": { "type": "number" },
+        "neighborhood": { "type": "number" },
+        "total": { "type": "number" },
+        "isOffline": { "type": "boolean", "description": "Define se o sistema está em manutenção" },
+        "history": { 
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "auth": {
+    "providers": []
+  },
+  "firestore": {
+    "/settings/metrics": {
+      "schema": "#/backend/entities/StoreMetrics",
+      "description": "Dados globais de fluxo e métricas da Souza Elétrica."
+    }
+  }
+}
